@@ -1,0 +1,17 @@
+# Default ignored files
+HELP md.
+build/
+
+!**/src/main/**
+!**/src/test/**
+
+###Intellij Idea###
+.idea
+*.iws
+*.iml
+*.ipr
+
+###Gradle###
+.gradle
+
+*.log
