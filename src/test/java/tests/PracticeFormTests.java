@@ -13,8 +13,12 @@ public class PracticeFormTests {
     @BeforeAll
     static void beforeAll() {
         System.out.println("###  beforeAll()\n");
-        Configuration.browserSize = "1980x1080";
+        Configuration.browserSize = "600x1920";
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.holdBrowserOpen = true;
+        Configuration.timeout = 10000; //4000 default
+
     }
 
     @Test
@@ -24,7 +28,7 @@ public class PracticeFormTests {
         $("#lastName").setValue("Smith");
         $("#userEmail").setValue("annsmth@yes.com");
         $("[for=gender-radio-2]").click();
-        $("#userNumber").setValue("88002223366");
+        $("#userNumber").setValue("8800222336");
 
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("2000");
@@ -36,24 +40,23 @@ public class PracticeFormTests {
         $("[for=hobbies-checkbox-2]").click();
         $("[for=hobbies-checkbox-3]").click();
         $("#currentAddress").setValue("220 East Chicago Avenue,Chicago");
-        $("#state").click();
-        $("#react-select-3-input").val("Harayna").pressEnter();
-        $("#city").scrollTo().click();
-        $("#react-select-4-input").val("Karnal").pressEnter();
-
+        $("#state").scrollTo().click();
+        $("#react-select-3-input").val("Uttar Pradesh").pressEnter();
+        $("#city").click();
+        $("#react-select-4-input").val("Lucknow").pressEnter();
         $("#submit").click();
 
         //Проверка
 
-        $(".table-responsive").$(byText("Sudent Name")).shouldHave(text("Ann Smith"));
-        $(".table-responsive").$(byText("Student Email")).shouldHave(text("annsmth@yes.com"));
-        $(".table-responsive").$(byText("Gender")).shouldHave(text("Female"));
-        $(".table-responsive").$(byText("Mobile")).shouldHave(text("88002223366"));
-        $(".table-responsive").$(byText("Date of Birth")).shouldHave(text("30.01.2000"));
-        $(".table-responsive").$(byText("Subjects")).shouldHave(text("English"));
-        $(".table-responsive").$(byText("Hobbies")).shouldHave(text("Sports, Reading, Music"));
-        $(".table-responsive").$(byText("Address")).shouldHave(text("220 East Chicago Avenue,Chicago"));
-        $(".table-responsive").$(byText("State and City")).shouldHave(text("Harayna Karnal"));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Ann Smith"));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("annsmth@yes.com"));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Female"));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("8800222336"));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("30 December,1999"));
+        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("English"));
+        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Sports, Reading, Music"));
+        $(".table-responsive").$(byText("Address")).parent().shouldHave(text("220 East Chicago Avenue,Chicago"));
+        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("Uttar Pradesh Lucknow"));
 
 
 
