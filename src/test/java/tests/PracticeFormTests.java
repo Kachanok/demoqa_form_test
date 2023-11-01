@@ -6,28 +6,31 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTests {
     @BeforeAll
     static void beforeAll() {
         System.out.println("###  beforeAll()\n");
-        Configuration.browserSize = "600x1920";
+        Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         Configuration.timeout = 10000; //4000 default
+
 
     }
 
     @Test
     void fillFormTest() {
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+
         $("#firstName").setValue("Ann");
         $("#lastName").setValue("Smith");
         $("#userEmail").setValue("annsmth@yes.com");
-        $("[for=gender-radio-2]").click();
+        $("#genderWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("8800222336");
 
         $("#dateOfBirthInput").click();
@@ -36,12 +39,12 @@ public class PracticeFormTests {
         $(".react-datepicker__day--030").click();
 
         $("#subjectsInput").val("English").pressEnter();
-        $("[for=hobbies-checkbox-1]").click();
-        $("[for=hobbies-checkbox-2]").click();
-        $("[for=hobbies-checkbox-3]").click();
+        $("[#hobbiesWrapper").$(byText("Sports")).click();
+        $("[#hobbiesWrapper").$(byText("Reading")).click();
+        $("[#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("PictureForTest.png");
         $("#currentAddress").setValue("220 East Chicago Avenue,Chicago");
-        $("#state").scrollTo().click();
+        $("#state").click();
         $("#react-select-3-input").val("Uttar Pradesh").pressEnter();
         $("#city").click();
         $("#react-select-4-input").val("Lucknow").pressEnter();
