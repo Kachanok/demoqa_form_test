@@ -39,6 +39,7 @@ public class PracticeFormTests {
         $("[for=hobbies-checkbox-1]").click();
         $("[for=hobbies-checkbox-2]").click();
         $("[for=hobbies-checkbox-3]").click();
+        $("#uploadPicture").uploadFromClasspath("PictureForTest.png");
         $("#currentAddress").setValue("220 East Chicago Avenue,Chicago");
         $("#state").scrollTo().click();
         $("#react-select-3-input").val("Uttar Pradesh").pressEnter();
@@ -55,6 +56,7 @@ public class PracticeFormTests {
         $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("30 December,1999"));
         $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("English"));
         $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Sports, Reading, Music"));
+        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("PictureForTest.png"));
         $(".table-responsive").$(byText("Address")).parent().shouldHave(text("220 East Chicago Avenue,Chicago"));
         $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("Uttar Pradesh Lucknow"));
 
