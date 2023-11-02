@@ -30,7 +30,7 @@ public class PracticeFormTests {
         $("#firstName").setValue("Ann");
         $("#lastName").setValue("Smith");
         $("#userEmail").setValue("annsmth@yes.com");
-        $("#genderWrapper").$(byText("Male")).click();
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("8800222336");
 
         $("#dateOfBirthInput").click();
@@ -39,9 +39,9 @@ public class PracticeFormTests {
         $(".react-datepicker__day--030").click();
 
         $("#subjectsInput").val("English").pressEnter();
-        $("[#hobbiesWrapper").$(byText("Sports")).click();
-        $("[#hobbiesWrapper").$(byText("Reading")).click();
-        $("[#hobbiesWrapper").$(byText("Music")).click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("PictureForTest.png");
         $("#currentAddress").setValue("220 East Chicago Avenue,Chicago");
         $("#state").click();
