@@ -1,6 +1,6 @@
-package Pages;
+package pages;
 
-import Pages.Components.CalendarComponent;
+import pages.Components.CalendarComponent;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 

@@ -1,6 +1,6 @@
 package tests;
 
-import Pages.RegistrationPage;
+import pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
 public class RegistrationFormWithPageObjectsTest extends TestBase {
