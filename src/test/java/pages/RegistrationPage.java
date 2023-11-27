@@ -1,6 +1,6 @@
 package pages;
 
-import pages.Components.CalendarComponent;
+import pages.components.CalendarComponent;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
 
-    private SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
      lastNameInput = $("#lastName"),
      userEmailInput = $("#userEmail"),
      userNumberInput = $("#userNumber"),
@@ -22,10 +22,9 @@ public class RegistrationPage {
      uploadPictureInput = $("#uploadPicture"),
      selectState = $("#react-select-3-input"),
      selectCity = $("#react-select-4-input"),
-     submitButton = $("#submit");
+     submitButton = $("#submit"),
+     tableResponsive = $(".table-responsive");
     CalendarComponent calendarComponent = new CalendarComponent();
-
-
 
 
     public RegistrationPage openPage(){
@@ -117,7 +116,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage checkResult(String key, String value){
-        $(".table-responsive").$(byText(key)).parent()
+        tableResponsive.$(byText(key)).parent()
                 .shouldHave(text(value));
 
         return this;
@@ -125,7 +124,6 @@ public class RegistrationPage {
 
     public RegistrationPage checkNotCompleteForm() {
         firstNameInput.shouldHave(Condition.cssValue("border-color", "rgb(220, 53, 69)"));
-
         return this;
     }
 }
