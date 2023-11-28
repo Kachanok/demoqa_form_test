@@ -11,23 +11,23 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationPage {
 
     private final SelenideElement firstNameInput = $("#firstName"),
-     lastNameInput = $("#lastName"),
-     userEmailInput = $("#userEmail"),
-     userNumberInput = $("#userNumber"),
-     genderWrapperInput = $("#genterWrapper"),
-     currentAddressInput = $("#currentAddress"),
-     calendarInput = $("#dateOfBirthInput"),
-     subjectsInput = $("#subjectsInput"),
-     hobbiesInput = $("#hobbiesWrapper"),
-     uploadPictureInput = $("#uploadPicture"),
-     selectState = $("#react-select-3-input"),
-     selectCity = $("#react-select-4-input"),
-     submitButton = $("#submit"),
-     tableResponsive = $(".table-responsive");
+            lastNameInput = $("#lastName"),
+            userEmailInput = $("#userEmail"),
+            userNumberInput = $("#userNumber"),
+            genderWrapperInput = $("#genterWrapper"),
+            currentAddressInput = $("#currentAddress"),
+            calendarInput = $("#dateOfBirthInput"),
+            subjectsInput = $("#subjectsInput"),
+            hobbiesInput = $("#hobbiesWrapper"),
+            uploadPictureInput = $("#uploadPicture"),
+            selectState = $("#react-select-3-input"),
+            selectCity = $("#react-select-4-input"),
+            submitButton = $("#submit"),
+            tableResponsive = $(".table-responsive");
+
     CalendarComponent calendarComponent = new CalendarComponent();
 
-
-    public RegistrationPage openPage(){
+    public RegistrationPage openPage() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
@@ -48,14 +48,14 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setEmail(String value){
+    public RegistrationPage setEmail(String value) {
         userEmailInput.sendKeys(value);
 
         return this;
     }
 
 
-    public RegistrationPage setGender(String value){
+    public RegistrationPage setGender(String value) {
         genderWrapperInput.$(byText(value)).click();
 
         return this;
@@ -75,14 +75,14 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setDateOfBirth(String day, String month, String year ){
+    public RegistrationPage setDateOfBirth(String day, String month, String year) {
         calendarInput.click();
         calendarComponent.setDate(day, month, year);
-        
+
         return this;
     }
 
-    public RegistrationPage setSubjects(String value){
+    public RegistrationPage setSubjects(String value) {
         subjectsInput.setValue(value).pressEnter();
 
         return this;
@@ -93,19 +93,19 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage uploadPicture(){
+    public RegistrationPage uploadPicture() {
         uploadPictureInput.uploadFromClasspath("PictureForTest.png");
 
         return this;
     }
 
-    public RegistrationPage setState(String value){
+    public RegistrationPage setState(String value) {
         selectState.val(value).pressEnter();
 
         return this;
     }
 
-    public RegistrationPage setCity(String value){
+    public RegistrationPage setCity(String value) {
         selectCity.val(value).pressEnter();
 
         return this;
@@ -115,15 +115,15 @@ public class RegistrationPage {
         submitButton.pressEnter();
         return this;
     }
-    public RegistrationPage checkResult(String key, String value){
+
+    public RegistrationPage checkResult(String key, String value) {
         tableResponsive.$(byText(key)).parent()
                 .shouldHave(text(value));
 
         return this;
     }
 
-    public RegistrationPage checkNotCompleteForm() {
+    public void checkNotCompleteForm() {
         firstNameInput.shouldHave(Condition.cssValue("border-color", "rgb(220, 53, 69)"));
-        return this;
     }
 }
