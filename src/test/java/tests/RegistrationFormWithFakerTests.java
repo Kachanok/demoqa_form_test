@@ -4,8 +4,6 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-import static tests.TestData.*;
-
 
 public class RegistrationFormWithFakerTests extends TestBase {
 
@@ -20,9 +18,9 @@ public class RegistrationFormWithFakerTests extends TestBase {
         //заполнение всех полей
 
         registrationPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(userEmail)
+                .setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setEmail(data.userEmail)
                 .setGender(data.gender)
                 .setUserNumber(data.userNumber)
                 .setDateOfBirth(data.day, data.month, data.year)
@@ -42,7 +40,7 @@ public class RegistrationFormWithFakerTests extends TestBase {
                 .checkResult("Mobile", data.userNumber)
                 .checkResult("Date of Birth", data.day + " " + data.month + "," + data.year)
                 .checkResult("Subjects", data.subject)
-                .checkResult("Hobbies", data.hobbies + ", " + data.hobbies + ", " + data.hobbies)
+                .checkResult("Hobbies", data.hobbies)
                 .checkResult("Picture", "PictureForTest.png")
                 .checkResult("Address", data.streetAddress)
                 .checkResult("State and City", data.state + " " + data.city);
